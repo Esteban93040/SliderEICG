@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: transparent;
+        }
+
+        .slider {
+            position: relative;
+            width: 800px;
+            max-width: 100%;
+            height: 400px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .slider img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .boton {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            width: 45px;
+            height: 45px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+
+            font-size: 25px;
+            cursor: pointer;
+
+            z-index: 10;
+        }
+
+        .boton:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .anterior {
+            left: 15px;
+        }
+
+        .siguiente {
+            right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slider">
+
+        <img id="imagen" src="images/Ec-El cairo.png" alt="Imagen del slider">
+
+        <button class="boton anterior" onclick="anterior()">
+            &#10094;
+        </button>
+
+        <button class="boton siguiente" onclick="siguiente()">
+            &#10095;
+        </button>
+
+    </div>
+
+    <script>
+
+        // ==========================================
+        // IMÁGENES DEL SLIDER
+        // ==========================================
+
+        const imagenes = [
+            "images/Ec-El cairo.png",
+            "images/EC-ElAguila.png",
+            "images/EC-Versalles.png",
+            "images/Elaguila.png",
+            "images/Versalles.png",
+            "images/Elcairo.png"
+        ];
+
+        let posicion = 0;
+
+        const imagen = document.getElementById("imagen");
+
+
+        function mostrarImagen() {
+            imagen.src = imagenes[posicion];
+        }
+
+
+        function siguiente() {
+
+            posicion++;
+
+            if (posicion >= imagenes.length) {
+                posicion = 0;
+            }
+
+            mostrarImagen();
+        }
+
+
+        function anterior() {
+
+            posicion--;
+
+            if (posicion < 0) {
+                posicion = imagenes.length - 1;
+            }
+
+            mostrarImagen();
+        }
+
+    </script>
+
+</body>
+
+</html>
